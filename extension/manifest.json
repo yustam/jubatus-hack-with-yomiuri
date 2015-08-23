@@ -1,0 +1,19 @@
+{
+  "name": "Jubatus Web Page Recommender",
+  "version": "0.0.1",
+  "manifest_version": 2,
+  "description": "This is web page recommender by Jubatus.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "browser_action": {
+    "default_icon": "icons/icon48.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "http://ec2-52-68-41-17.ap-northeast-1.compute.amazonaws.com:5000/",
+    "activeTab"
+  ]
+}
