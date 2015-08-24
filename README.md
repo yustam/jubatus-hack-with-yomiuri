@@ -1,6 +1,6 @@
 # jubatus-hack-with-yomiuri
 
-8/22~23に開催された`Jubatus Hackathon with 読売新聞`の成果物です。
+8/22~23に開催された`Jubatus Hackathon with 読売新聞`の成果物です。  
 レコメンドのチュートリアルを応用して記事レコメンドを作成し実際に利用できる形にしてみました。
 
 ## 仕組み
@@ -28,9 +28,9 @@
 
 ### Jubatus Server
 
-Jubatusインストール済みのAMI(jubatus-0.8.1:ami-0c34b20c)を使用しました(公式？)
-(publicなので`jubatus`で検索すれば出てくる)
-`ubuntu`なのでubuntuユーザでログインして`similar_article.json`で起動
+Jubatusインストール済みのAMI(jubatus-0.8.1:ami-0c34b20c)を使用しました(公式？)  
+(publicなので`jubatus`で検索すれば出てくる)  
+`ubuntu`なのでubuntuユーザでログインして`similar_article.json`で起動  
 ポートはデフォルトの9199番を使用。
 
 ```bash
@@ -39,8 +39,8 @@ jubarecommender --configpath similar_article.json
 
 ### API Server
 
-こちらは通常のAmazon Linuxを使用。jubatusクライアントやMeCabをインストールする。
-Flaskを使用している。依存ライブラリをインストールしたら下記コマンドで起動。
+こちらは通常のAmazon Linuxを使用。jubatusクライアントやMeCabをインストールする。  
+Flaskを使用している。依存ライブラリをインストールしたら下記コマンドで起動。  
 ポートはデフォルトの5000番を使用。
 
 ```bash
@@ -49,9 +49,9 @@ python api.py
 
 ### 学習
 
-Jubatusサーバに記事データを投入する。
-こちらはMacクライアントで実行した。brew/pipでほぼ必要な物は全て入る。
-(jubatus,mecab,mecab-pythonなど)
+Jubatusサーバに記事データを投入する。  
+こちらはMacクライアントで実行した。brew/pipでほぼ必要な物は全て入る。  
+(jubatus,mecab,mecab-pythonなど)  
 インストールしたら下記コマンドで実行。
 
 ```bash
@@ -60,8 +60,8 @@ python train_yomiuri.py
 
 ### APIのテスト
 
-外部からアクセス可能か試してみる。
-パラメータにURLを渡すとJubatusの学習データの中からキーワードに類似した記事を3件返す。
+外部からアクセス可能か試してみる。  
+パラメータにURLを渡すとJubatusの学習データの中からキーワードに類似した記事を3件返す。  
 URLと一緒に返すスコアが1に近いほど類似度が高い。
 
 ```bash
@@ -94,8 +94,10 @@ $ curl http://{ホスト名}:5000/?url=http://www.example.com/
 
 ### Chrome拡張
 
-`extension`ディレクトリごと拡張機能としてChromeに設定する
-あとはpublicアクセス可能な任意のページで拡張機能を開くとレコメンドが表示される
+`extension`ディレクトリごと拡張機能としてChromeに設定する  
+あとはpublicアクセス可能な任意のページで拡張機能を開くとレコメンドが表示される  
+ページのタイトルからキーワードを抽出しているので記事である必要もなし  
+閲覧したページはJubatusが学習するので次からレコメンドに出てくるようになります
 
 ## 参考URL
 
